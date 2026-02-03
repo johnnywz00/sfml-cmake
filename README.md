@@ -14,7 +14,7 @@ I've taken a little time to restructure some things before posting the code here
 * **:**  Implements primary graphical elements; physics; game logic
 * **objects:**  Small structs representing balls, pockets, etc.
   
-(From my "reusable modules" repo: github.com/johnnywz00/SFML-shared-headers)
+(From my "reusable modules" repo: https://github.com/johnnywz00/SFML-shared-headers)
 * **jwz:**  C++ utility functions, #defines, shortcuts
 * **jwzsfml:**  Like above, but SFML-specific
 
