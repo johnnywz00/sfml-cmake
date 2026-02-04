@@ -19,7 +19,7 @@ I've taken a little time to restructure some things before posting the code here
 * **jwzsfml:**  Like above, but SFML-specific
 
 ### BUILDING INSTRUCTIONS
-Ready-made program files are available on the Releases page of this repository, with versions for MacOS, Windows, and Linux. If you have reasons for building from source:
+Ready-made program files are available on the Releases page of this repository, with versions for MacOS, Windows, and Linux. If your OS isn't supported by the pre-made versions, or if you have other reasons for building from source:
 - Clone this repository, and navigate to the root folder of that clone in a terminal window.
 - Run:
 <pre>
