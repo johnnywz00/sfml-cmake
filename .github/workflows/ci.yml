@@ -79,14 +79,8 @@ jobs:
         # Set "-DCMAKE_C_COMPILER=${{ matrix.c_compiler }}" for C/C++ projects, otherwise use CXX for C++ only projects.
         run: >
           cmake -B ${{ steps.strings.outputs.build-output-dir }}
-          -DCMAKE_CXX_STANDARD=17
-          -DCMAKE_CXX_STANDARD_REQUIRED=ON
-          -DCMAKE_CXX_EXTENSIONS=OFF
           -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
           -DCMAKE_BUILD_TYPE=Release
-          -DSFML_BUILD_SHARED_LIBS=ON
-          -DBUILD_SHARED_LIBS=ON
-          -DSFML_STATIC_LIBRARIES=OFF
           -DPROJECT_VERSION="${{ github.ref_name }}"
           -S ${{ github.workspace }}
 
@@ -123,6 +117,7 @@ jobs:
       # with the exception that on Mac and Linux we can use libs/ and frameworks/
       # instead of keeping the libraries loose because we can set the 
       # rpath while building with cmake.
+      
       - name: (Windows) Reconfigure directory structure and remove extraneous .exe
         working-directory: ${{ steps.strings.outputs.build-output-dir }}
         shell: bash
