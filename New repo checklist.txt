@@ -17,7 +17,6 @@ file(COPY "${source_dir}/"
       DESTINATION "${dest_dir}"
       PATTERN "*.piko" EXCLUDE
 )
-?? pare some of the shared/static settings (also set in yaml)
 ?? make mac .app;  would put resources/ folder within .app/Contents/MacOS (so peer to exec.)
 
 couldn't do ZBilliards/ZBilliards through Mac runner: damaged executable. ZBilliardsf/ZBilliards worked
