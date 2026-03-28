@@ -11,7 +11,7 @@ set(CMAKE_INSTALL_RPATH "@executable_path;@executable_path/Frameworks;@executabl
 include(FetchContent)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 2.6.2
+    GIT_TAG 3.0.2
     GIT_SHALLOW ON
     EXCLUDE_FROM_ALL
     SYSTEM)
@@ -31,7 +31,7 @@ file(GLOB SOURCES "src/*.cpp" "src/*.hpp")
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
 	RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin

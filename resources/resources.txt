@@ -1,13 +1,11 @@
 @images
-
+icon.png	icon
 
 #repeated
-#paneedge.png		edges		repeat
+#paneEdge.png	edges	repeat
 
 @fonts
-Monaco.ttf		debug
-
+Monaco.ttf	debug
+"Trebuchet MS.ttf" textbox
 
 @sounds
-
-
