@@ -18,6 +18,7 @@ private:
 	static inline SplashScreen*	self_ = nullptr;
 	static Time					duration;
 	static StateType			nextState;
+	
 //	Sprite						bkgdImg;
 //	Text						splashTitle
 //								, signatureTxt
@@ -27,7 +28,3 @@ private:
 };
 
 #endif
-
-
-
-

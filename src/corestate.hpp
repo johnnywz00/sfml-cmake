@@ -33,7 +33,6 @@ public:
 	
 	void deactivate () override;
 	
-	
 private:
 	void reset ();
 
@@ -42,15 +41,6 @@ private:
 	Textbox*				activeTbox = nullptr;
 	Text					debugTxt {Resources::getDefaultFont(), "", 13};
 	
-	MouseRespondingSprite	spr {gTexture("deh")};
-	MouseRespondingText		txt {gFont("textbox")};
-	MouseRespondingRect		rect;
-	MouseRespondingCircle	circ;
-	
 }; //end class CoreState
 
 #endif
-
-
-
-

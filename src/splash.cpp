@@ -39,10 +39,6 @@ void SplashScreen::update (const Time& time)
 
 void SplashScreen::draw ()
 {
-	RectangleShape r;
-	r.setSize({500, 500});
-	r.setFillColor(AZURE);
-	rwin->draw(r);
 //	rwin->draw(bkgdImg);
 //	rwin->draw(splashTitle);
 //	rwin->draw(signatureTxt);

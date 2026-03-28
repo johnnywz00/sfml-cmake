@@ -34,15 +34,9 @@ public:
 	
 private:
 	static inline MainMenuState* self_ = nullptr;
+	
 	//title, buttons, thumbnails, instructions, signature
-	
-	RectangleShape r;///////////
-	
+		
 };
 
-
 #endif
-
-
-
-

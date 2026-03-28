@@ -8,68 +8,6 @@ void CoreState::onCreate ()
 	debugTxt.setPosition({8, 9});
 	debugTxt.setFillColor(AZURE);
 	
-	initAddMouseSprite(&spr, {{
-//		.texture = &gTexture("deh"),
-		 .position = {100, 100}
-		, .rotation = 90
-		},
-		{.draggable = true, .drawingOrder=105,
-			.clickFunc = [this](const vecF& pos){ spr.setColor(ORANGE);}}
-	});
-	initAddMouseText(&txt, {{
-		.charSize = 60,
-		.color = Color::Black,
-		.text = "HEBISBH",
-		.outlineThickness = 10,
-		.outlineColor = PURPLE,
-		.position = {200, 200},
-		.scale = {.5, 2},
-		.rotation = 17
-	}, {
-		.draggable = true,
-		.rightDraggable = true,
-		.mouseEnterFunc = []() { FullscreenOnlyApp::setRedrawColor(MUTEDGRASS); },
-		.mouseExitFunc = []() { FullscreenOnlyApp::setRedrawColor(Color::Black); }
-	}});
-	initAddMouseRect(&rect, {{
-		.size = {49, 78}, .color = ORANGE, .position = {300,300},
-		.outlineThickness=2
-	}, {.draggable=true,
-		.rightClickFunc = [this](const vecF& pos){ rect.shape.setScale({2, 2}); } }});
-	initAddMouseCircle(&circ, {{
-		.radius = 35, .color = CAPPUCCINO, .position = {400,400},
-		.outlineThickness=6, .outlineColor= decreaseBrightness(Color::White, 12)
-	}, {.draggable=true,
-		.clickFunc = [this](const vecF& pos){ if (isShiftPressed())circ.pendingDeletion = true; }}});
-	
-	emplaceMouseSprite({{
-		.texture = &gTexture("deh"),
-		.color=Color::Green,
-		.position = {100, 100}
-		, .rotation = 90
-	},
-		{.draggable = true, .drawingOrder=106 }
-	});
-	emplaceMouseText({{
-		.font = &gFont("textbox"),
-		.charSize = 60,
-		.color = Color::Green,
-		.text = "PHOHEBISBH",
-		.outlineThickness = 10,
-		.outlineColor = Color::Black,
-		.position = {200, 200},
-		.rotation = 170
-	}, {.draggable = true, .rightDraggable = true}});
-	emplaceMouseRect({{
-		.size = {49, 78}, .color = Color::Green, .position = {300,300},
-		.outlineThickness=2
-	}, {.draggable=true}});
-	emplaceMouseCircle({{
-		.radius = 35, .color = Color::Green, .position = {400,400},
-		.outlineThickness=6, .outlineColor= decreaseBrightness(Color::White, 12)
-	}, {.draggable=true}});
-	
-	
 	reset();
 }
 

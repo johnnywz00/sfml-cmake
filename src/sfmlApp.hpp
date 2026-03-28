@@ -64,4 +64,4 @@ public:
 	bool					dbgPauseAfterDraw_ = false;
 };
 
-#endif /* sfmlApp_hpp */
+#endif
