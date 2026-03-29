@@ -39,9 +39,14 @@ public:
 	
 	static Color redrawColor () { return redrawColor_; }
 	
-	static void showCursor (bool show) { self_->window.setMouseCursorVisible(show); }
+	static void showCursor (bool show)
+	{
+		self_->window.setMouseCursorVisible(show);
+	}
 	
 	void switchToState (StateType st);
+	
+	void setWindowState (State st, optional<VideoMode> = nullopt);
 
 	void dbgPauseAfterDraw () { dbgPauseAfterDraw_ = true; }
 	
@@ -56,12 +61,16 @@ public:
 	unordered_map<StateType, unique_ptr<BaseState>>
 							states;
 	BaseState*				curState = nullptr;
+
+private:
 	Clock            		clock;
 	Time             		elapsed;
 	Image                   icon;
+	
+	bool					isFullscreen = false;
 	bool					isFocused = true;
 	bool					isDone = false;
 	bool					dbgPauseAfterDraw_ = false;
 };
 
-#endif
+#endif /* sfmlApp_hpp */

@@ -105,32 +105,40 @@ public:
 		responderDrawPtrs.erase(resp);
 	}
 
-	void emplaceMouseSprite (const MouseSpriteConfig& cfg)
+	MouseResponder* emplaceMouseSprite (const MouseSpriteConfig& cfg)
 	{
 		unique_ptr<MouseResponder> spr = make_unique<MouseRespondingSprite>(cfg);
-		registerMouseResponderCommon(spr.get());
+		auto raw = spr.get();
+		registerMouseResponderCommon(raw);
 		responders.emplace(std::move(spr));
+		return raw;
 	}
 	
-	void emplaceMouseText (const MouseTextConfig& cfg)
+	MouseResponder* emplaceMouseText (const MouseTextConfig& cfg)
 	{
 		unique_ptr<MouseResponder> txt = make_unique<MouseRespondingText>(cfg);
-		registerMouseResponderCommon(txt.get());
+		auto raw = txt.get();
+		registerMouseResponderCommon(raw);
 		responders.emplace(std::move(txt));
+		return raw;
 	}
 	
-	void emplaceMouseRect (const MouseRectConfig& cfg)
+	MouseResponder* emplaceMouseRect (const MouseRectConfig& cfg)
 	{
 		unique_ptr<MouseResponder> rect = make_unique<MouseRespondingShape<RectangleShape>>(cfg);
-		registerMouseResponderCommon(rect.get());
+		auto raw = rect.get();
+		registerMouseResponderCommon(raw);
 		responders.emplace(std::move(rect));
+		return raw;
 	}
 	
-	void emplaceMouseCircle (const MouseCircleConfig& cfg)
+	MouseResponder* emplaceMouseCircle (const MouseCircleConfig& cfg)
 	{
 		unique_ptr<MouseResponder> circ = make_unique<MouseRespondingShape<CircleShape>>(cfg);
-		registerMouseResponderCommon(circ.get());
+		auto raw = circ.get();
+		registerMouseResponderCommon(raw);
 		responders.emplace(std::move(circ));
+		return raw;
 	}
 //==============================================================
 	

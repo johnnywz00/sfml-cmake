@@ -10,16 +10,7 @@ Keyboard::Key FullscreenOnlyApp::debugUnpauseKey = 	Keyboard::Key::Grave;
 
 FullscreenOnlyApp::FullscreenOnlyApp ()
 {
-	VideoMode mode = VideoMode::getDesktopMode();
-	auto state = State::Windowed;
-	auto fsmodes = VideoMode::getFullscreenModes();
-	if (fsmodes.size()) {
-		mode = fsmodes[0];
-		state = State::Fullscreen;
-	}
-	window.create(mode, programName, state);
-	
-	window.setFramerateLimit(framerateLimit);
+	setWindowState(State::Fullscreen);
 	
 	if (!icon.loadFromFile((resourcePath() / "images" / "icon.png").string()))
 		cerr << "Couldn't load icon. " << endl;
@@ -75,8 +66,11 @@ void FullscreenOnlyApp::update ()
 		if (textEntd || keyDown) {
 			if (!curState->handleTextEvent(event)
 				&& keyDown) {
-				// F5 toggle fullscreen?
-				curState->onKeyPress(keyDown->code);
+				if (keyDown->code == Keyboard::Key::F5)
+					setWindowState(
+						isFullscreen ? State::Windowed : State::Fullscreen,
+						isFullscreen ? optional(VideoMode({1300, 800})) : nullopt);
+				else curState->onKeyPress(keyDown->code);
 			}
 		}
 
@@ -144,6 +138,31 @@ void FullscreenOnlyApp::switchToState (StateType st)
 	window.setView(curState->vw);
 }
 
+void FullscreenOnlyApp::setWindowState (State st, optional<VideoMode> mode)
+{
+	if (st == State::Fullscreen) {
+		auto fsmodes = VideoMode::getFullscreenModes();
+		if (fsmodes.size()) {
+			mode = fsmodes[0];
+			isFullscreen = true;
+		}
+		else {
+			if (!mode)
+				mode = VideoMode::getDesktopMode();
+			st = State::Windowed;
+			isFullscreen = false;
+		}
+	}
+	else {
+		st = State::Windowed;
+		if (!mode)
+			mode = VideoMode::getDesktopMode();
+		isFullscreen = false;
+	}
+	window.create(*mode, programName, st);
+	window.setFramerateLimit(framerateLimit);
+	window.setView(curState ? curState->vw : window.getDefaultView());
+}
 
 int main (int argc, char* argv[])
 {
