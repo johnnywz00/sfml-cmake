@@ -128,9 +128,7 @@ void CoreState::update (const Time& time)
 	
 	//====  DEBUG PRINTING  =====
 	ostringstream oss;
-	oss << mouseVec.x << ", " << mouseVec.y << endl
-	<< vecfStr(txt.txt.gP()) << endl << responders.size()
-	;
+	oss << mouseVec.x << ", " << mouseVec.y << endl;
 	debugTxt.setString(oss.str());
 }
 
